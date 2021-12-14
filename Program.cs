@@ -88,7 +88,15 @@ namespace setul3
             Console.WriteLine("Calculati suma elementelor unui vector de n numere citite de la tastatura. Rezultatul se va afisa pe ecran.");
             Console.Write("n: ");
             int n = int.Parse(Console.ReadLine());
-            
+            int[] v = new int[n];
+            int sum = 0;
+            Console.WriteLine("Citeste vectorul:");
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = int.Parse(Console.ReadLine());
+                sum += v[i];
+            }
+            Console.WriteLine($"Suma elementelor vectorului este {sum}");
         }
 
         private static void Problema2()
