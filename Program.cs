@@ -232,6 +232,17 @@ namespace setul3
             Console.WriteLine("Reverse. Se da un vector nu n elemente. Se cere sa se inverseze ordinea elementelor din vector. Prin inversare se intelege ca primul element devine ultimul, al doilea devine penultimul etc.");
             Console.Write("n: ");
             int n = int.Parse(Console.ReadLine());
+            int[] v = new int[n];
+            Console.WriteLine("Citeste vectorul:");
+            for (int i = 0; i < n; i++)
+            {
+                v[n-i-1] = int.Parse(Console.ReadLine());
+            }
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write($"{v[i]} ");
+            }
+            Console.WriteLine();
         }
 
         private static void Problema8()
