@@ -290,13 +290,37 @@ namespace setul3
             }
             Console.WriteLine();
         }
-        //0 1 2 3 4 5
-        //4 5 0 1 2 3
+        
         private static void Problema10()
         {
             Console.WriteLine("Cautare binara. Se da un vector cu n elemente sortat in ordine crescatoare. Se cere sa se determine pozitia unui element dat k. Daca elementul nu se gaseste in vector rezultatul va fi -1.");
             Console.Write("n: ");
             int n = int.Parse(Console.ReadLine());
+            Console.Write("k: ");
+            int k = int.Parse(Console.ReadLine());
+            int[] v = new int[n];
+            Console.WriteLine("Citeste vectorul:");
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = int.Parse(Console.ReadLine());
+            }
+            int poz = -1,st=0,dr=n-1;
+            while(st < dr)
+            {
+                int mij = (st + dr) / 2;
+                if (v[mij] == k)
+                {
+                    poz = mij;
+                    break;
+                }
+                else if (v[mij] > k)
+                    dr = mij - 1;
+                else st = dr + 1;
+            }
+            if (poz == -1)
+                Console.WriteLine($"Elementul {k} nu se afla in vector");
+            else
+                Console.WriteLine($"Elementul {k} se afla in vector pe pozitia {poz}");
         }
 
         private static void Problema11()
