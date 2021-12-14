@@ -127,7 +127,7 @@ namespace setul3
             Console.Write("n: ");
             int n = int.Parse(Console.ReadLine());
             int[] v = new int[n];
-            int min = int.MaxValue, max = int.MaxValue;
+            int min = int.MaxValue, max = int.MinValue;
             int pozmin = -1, pozmax = -1;
             Console.WriteLine("Citeste vectorul:");
             for (int i = 0; i < n; i++)
@@ -138,7 +138,7 @@ namespace setul3
                     min = v[i];
                     pozmin = i;
                 }
-                else if (v[i] > max)
+                if (v[i] > max)
                 {
                     max = v[i];
                     pozmax = i;
@@ -153,6 +153,30 @@ namespace setul3
             Console.WriteLine("Deteminati printr-o singura parcurgere, cea mai mica si cea mai mare valoare dintr-un vector si de cate ori apar acestea.");
             Console.Write("n: ");
             int n = int.Parse(Console.ReadLine());
+            int[] v = new int[n];
+            int min = int.MaxValue, max = int.MinValue;
+            int aparitiiMin = 0, aparitiiMax = 0;
+            Console.WriteLine("Citeste vectorul:");
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = int.Parse(Console.ReadLine());
+                if (v[i] == min)
+                    aparitiiMin++;
+                else if (v[i] == max)
+                    aparitiiMax++;
+                else if (v[i] < min)
+                {
+                    min = v[i];
+                    aparitiiMin = 1;
+                }
+                else if (v[i] > max)
+                {
+                    max = v[i];
+                    aparitiiMax = 1;
+                }
+            }
+            Console.WriteLine($"Numarul minim apare de {aparitiiMin} ori" +
+                $", iar numarul maxim apare de {aparitiiMax} ori");
         }
 
         private static void Problema5()
