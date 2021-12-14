@@ -271,14 +271,18 @@ namespace setul3
             Console.WriteLine("Rotire k. Se da un vector cu n elemente. Rotiti elementele vectorului cu k pozitii spre stanga.");
             Console.Write("n: ");
             int n = int.Parse(Console.ReadLine());
+            Console.Write("k: ");
+            int k = int.Parse(Console.ReadLine());
+            if (k > n)
+                k = k % n;
             int[] v = new int[n];
             Console.WriteLine("Citeste vectorul:");
             for (int i = 0; i < n; i++)
             {
-                if (i == 0)
-                    v[n - 1] = int.Parse(Console.ReadLine());
+                if (i < k)
+                    v[n - k + i] = int.Parse(Console.ReadLine());
                 else
-                    v[i - 1] = int.Parse(Console.ReadLine());
+                    v[i - k] = int.Parse(Console.ReadLine());
             }
             for (int i = 0; i < n; i++)
             {
@@ -286,7 +290,8 @@ namespace setul3
             }
             Console.WriteLine();
         }
-
+        //0 1 2 3 4 5
+        //4 5 0 1 2 3
         private static void Problema10()
         {
             Console.WriteLine("Cautare binara. Se da un vector cu n elemente sortat in ordine crescatoare. Se cere sa se determine pozitia unui element dat k. Daca elementul nu se gaseste in vector rezultatul va fi -1.");
