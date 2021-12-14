@@ -126,6 +126,26 @@ namespace setul3
             Console.WriteLine("Sa se determine pozitiile dintr-un vector pe care apar cel mai mic si cel mai mare element al vectorului. Pentru extra-credit realizati programul efectuand 3n/2 comparatii (in cel mai rau caz).");
             Console.Write("n: ");
             int n = int.Parse(Console.ReadLine());
+            int[] v = new int[n];
+            int min = int.MaxValue, max = int.MaxValue;
+            int pozmin = -1, pozmax = -1;
+            Console.WriteLine("Citeste vectorul:");
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = int.Parse(Console.ReadLine());
+                if (v[i] < min)
+                {
+                    min = v[i];
+                    pozmin = i;
+                }
+                else if (v[i] > max)
+                {
+                    max = v[i];
+                    pozmax = i;
+                }
+            }
+                Console.WriteLine($"Numarul minim se afla pe pozitia {pozmin}" +
+                    $", iar numarul maxim pe pozitia {pozmax}");
         }
 
         private static void Problema4()
