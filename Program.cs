@@ -184,6 +184,23 @@ namespace setul3
             Console.WriteLine("Se da un vector cu n elemente, o valoare e si o pozitie din vector k. Se cere sa se insereze valoarea e in vector pe pozitia k. Primul element al vectorului se considera pe pozitia zero.");
             Console.Write("n: ");
             int n = int.Parse(Console.ReadLine());
+            Console.Write("e: ");
+            int e = int.Parse(Console.ReadLine());
+            Console.Write("k: ");
+            int k = int.Parse(Console.ReadLine());
+            int[] v = new int[n+1];
+            Console.WriteLine("Citeste vectorul:");
+            for (int i = 0; i <= n; i++)
+            {
+                if (i == k)
+                    v[i++] = e;
+                v[i] = int.Parse(Console.ReadLine());
+            }
+            for (int i = 0; i <= n; i++)
+            {
+                Console.Write($"{v[i]} ");
+            }
+            Console.WriteLine();
         }
 
         private static void Problema6()
