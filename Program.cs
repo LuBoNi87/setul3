@@ -104,6 +104,21 @@ namespace setul3
             Console.WriteLine("Se da un vector cu n elemente si o valoare k. Se cere sa se determine prima pozitie din vector pe care apare k. Daca k nu apare in vector rezultatul va fi -1.");
             Console.Write("n: ");
             int n = int.Parse(Console.ReadLine());
+            Console.Write("k: ");
+            int k = int.Parse(Console.ReadLine());
+            int[] v = new int[n];
+            int poz = -1;
+            Console.WriteLine("Citeste vectorul:");
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = int.Parse(Console.ReadLine());
+                if(v[i]==k && poz == -1)
+                    poz = i;
+            }
+            if(poz == -1)
+                Console.WriteLine($"Numarul {k} nu apare in vector");
+            else
+                Console.WriteLine($"Numarul {k} se afla pe pozitia {poz}");
         }
 
         private static void Problema3()
