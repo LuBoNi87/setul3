@@ -328,6 +328,21 @@ namespace setul3
             Console.WriteLine("Se da un numar natural n. Se cere sa se afiseze toate numerele prime mai mici sau egale cu n (ciurul lui Eratostene).");
             Console.Write("n: ");
             int n = int.Parse(Console.ReadLine());
+            int[] v = new int[n+1];
+            if(n>=2)
+                Console.Write("2 ");
+            for (int i = 3; i <= n-1; i+=2)
+            {
+                if (v[i] == 0)
+                {
+                    Console.Write($"{i} ");
+                    for (int j = 2 * i; j <= n; j += i)
+                    {
+                        v[j] = 1;
+                    }
+                }
+                else continue;
+            }
         }
 
         private static void Problema12()
