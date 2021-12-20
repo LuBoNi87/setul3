@@ -434,28 +434,6 @@ namespace setul3
             Console.WriteLine("Modificati un vector prin eliminarea elementelor care se repeta, fara a folosi un alt vector.");
             Console.Write("n: ");
             int n = int.Parse(Console.ReadLine());
-            int[] v = new int[n + 1];
-            Console.WriteLine("Citeste vectorul:");
-            for (int i = 0; i < n; i++)
-            {
-                v[i] = int.Parse(Console.ReadLine());
-            }
-            int nr_zero = 0;
-            for (int i = 0; i < n; i++)
-            {
-                if (v[i] == 0)
-                {
-                    nr_zero++;
-                    for (int j = i; j < n - 1; j++)
-                        v[j] = v[j + 1];
-                }
-            }
-            for (int i = n - nr_zero; i < n; i++)
-                v[i] = 0;
-            for (int i = 0; i < n; i++)
-            {
-                Console.Write($"{v[i]} ");
-            }
         }
 
         private static void Problema16()
