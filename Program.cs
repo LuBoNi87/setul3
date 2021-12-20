@@ -514,6 +514,22 @@ namespace setul3
             Console.WriteLine("Se da un polinom de grad n ai carui coeficienti sunt stocati intr-un vector. Cel mai putin semnificativ coeficient este pe pozitia zero in vector. Se cere valoarea polinomului intr-un punct x.");
             Console.Write("n: ");
             int n = int.Parse(Console.ReadLine());
+            Console.Write("x: ");
+            int x = int.Parse(Console.ReadLine());
+            int[] v = new int[n];
+            Console.WriteLine("Citeste vectorul:");
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = int.Parse(Console.ReadLine());
+            }
+            long rez = 0;
+            int p = 1;
+            for (int i = n-1; i >= 0; i--)
+            {
+                rez = rez + v[i] * p;
+                p *= x;
+            }
+            Console.WriteLine($"{rez}");
         }
 
         private static void Problema19()
