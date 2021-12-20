@@ -489,6 +489,24 @@ namespace setul3
             Console.WriteLine("Se da un numar n in baza 10 si un numar b. 1 < b < 17. Sa se converteasca si sa se afiseze numarul n in baza b.");
             Console.Write("n: ");
             int n = int.Parse(Console.ReadLine());
+            Console.Write("b: ");
+            int b = int.Parse(Console.ReadLine());
+            string map = "0123456789ABCDEF";
+            int cifra;
+            Stack<int> digits = new Stack<int>();
+            while(n>0)
+            {
+                cifra = n % b;
+                n /= b;
+                digits.Push(cifra);
+            }
+            StringBuilder sb = new StringBuilder();
+            while(digits.Count > 0)
+            {
+                cifra = digits.Pop();
+                sb.Append(map[cifra]);
+            }
+            Console.WriteLine($"{sb}");
         }
 
         private static void Problema18()
