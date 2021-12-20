@@ -377,6 +377,27 @@ namespace setul3
             Console.WriteLine("Sortare prin insertie. Implementati algoritmul de sortare <Insertion Sort>.");
             Console.Write("n: ");
             int n = int.Parse(Console.ReadLine());
+            int[] v = new int[n + 1];
+            Console.WriteLine("Citeste vectorul:");
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = int.Parse(Console.ReadLine());
+            }
+            for (int i = 1; i < n; i++)
+            {
+                int nr = v[i];
+                int j = i - 1;
+                while(j>=0 && v[j] > nr)
+                {
+                    v[j + 1] = v[j];
+                    j--;
+                }
+                v[j + 1] = nr;
+            }
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write($"{v[i]} ");
+            }
         }
 
         private static void Problema14()
