@@ -628,7 +628,69 @@ namespace setul3
         private static void Problema22()
         {
             Console.WriteLine("Se dau doi vectori v1 si v2. Se cere sa determine intersectia, reuniunea, si diferentele v1-v2 si v2 -v1 (implementarea operatiilor cu multimi). Elementele care se repeta vor fi scrise o singura data in rezultat.");
-            
+            Console.WriteLine("Primul vector:");
+            string[] tokens1 = Console.ReadLine().Split();
+            List<int> v1 = new List<int>();
+            for (int i = 0; i < tokens1.Length; i++)
+            {
+                v1.Add(int.Parse(tokens1[i]));
+            }
+            Console.WriteLine("Al doilea vector:");
+            string[] tokens2 = Console.ReadLine().Split();
+            List<int> v2 = new List<int>();
+            for (int i = 0; i < tokens2.Length; i++)
+            {
+                v2.Add(int.Parse(tokens2[i]));
+            }
+            int length_small = 0;
+            int length_big = 0;
+            if (v1.Count < v2.Count)
+            {
+                length_small = v1.Count;
+                length_big = v2.Count;
+            }
+            List<int> intersectie = new List<int>();
+            List<int> reuniune = new List<int>();
+            List<int> diferenta1 = new List<int>();
+            List<int> diferenta2 = new List<int>();
+            reuniune = v1;
+            for (int i = 0; i<v2.Count; i++)
+            {
+                if (v1.Contains(v2[i]))
+                    intersectie.Add(v2[i]);
+                else
+                {
+                    reuniune.Add(v2[i]);
+                    diferenta2.Add(v2[i]);
+                }
+            }
+            for (int i = 0; i < v1.Count; i++)
+                if (!v2.Contains(v1[i]))
+                    diferenta1.Add(v1[i]);
+            Console.WriteLine("intersectia");
+            foreach (var item in intersectie)
+            {
+                Console.Write($"{item} ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("reuniunea");
+            foreach (var item in reuniune)
+            {
+                Console.Write($"{item} ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("diferenta v1 - v2");
+            foreach (var item in diferenta1)
+            {
+                Console.Write($"{item} ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("diferenta v2 - v1");
+            foreach (var item in diferenta2)
+            {
+                Console.Write($"{item} ");
+            }
+            Console.WriteLine();
         }
 
         private static void Problema23()
