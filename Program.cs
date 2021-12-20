@@ -274,7 +274,7 @@ namespace setul3
             Console.Write("k: ");
             int k = int.Parse(Console.ReadLine());
             if (k > n)
-                k = k % n;
+                k %= n;
             int[] v = new int[n];
             Console.WriteLine("Citeste vectorul:");
             for (int i = 0; i < n; i++)
@@ -350,6 +350,26 @@ namespace setul3
             Console.WriteLine("Sortare selectie. Implementati algoritmul de sortare <Selection Sort>.");
             Console.Write("n: ");
             int n = int.Parse(Console.ReadLine());
+            int[] v = new int[n+1];
+            Console.WriteLine("Citeste vectorul:");
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = int.Parse(Console.ReadLine());
+            }
+            for (int i = 0; i < n-1; i++)
+            {
+                int indexMin = i;
+                for (int j = i+1; j < n; j++)
+                    if (v[j] < v[indexMin])
+                        indexMin = j;
+                int temp = v[indexMin];
+                v[indexMin] = v[i];
+                v[i] = temp;
+            }
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write($"{v[i]} ");
+            }
         }
 
         private static void Problema13()
