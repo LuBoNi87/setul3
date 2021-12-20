@@ -537,6 +537,38 @@ namespace setul3
             Console.WriteLine("Se da un vector s (vectorul in care se cauta) si un vector p (vectorul care se cauta). Determinati de cate ori apare p in s. De ex. Daca s = [1,2,1,2,1,3,1,2,1] si p = [1,2,1] atunci p apare in s de 3 ori. (Problema este dificila doar daca o rezolvati cu un algoritm liniar).");
             Console.Write("n: ");
             int n = int.Parse(Console.ReadLine());
+            Console.Write("m: ");
+            int m = int.Parse(Console.ReadLine());
+            int[] s = new int[n];
+            int[] p = new int[m];
+            int nr_aparitii = 0;
+            Console.WriteLine("Citeste vectorul s:");
+            for (int i = 0; i < n; i++)
+            {
+                s[i] = int.Parse(Console.ReadLine());
+            }
+            Console.WriteLine("Citeste vectorul p:");
+            for (int i = 0; i < m; i++)
+            {
+                p[i] = int.Parse(Console.ReadLine());
+            }
+            for (int i = 0; i <= n-m; i++)
+            {
+                bool ok = true;
+                int idx = 0;
+                for(int j=i; j<i+m; j++)
+                {
+                    if (s[j] != p[idx])
+                    {
+                        ok = false;
+                        break;
+                    }
+                    idx++;
+                }
+                if (ok)
+                    nr_aparitii++;
+            }
+            Console.WriteLine($"p apare in s de {nr_aparitii} ori");
         }
 
         private static void Problema20()
