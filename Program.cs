@@ -573,9 +573,30 @@ namespace setul3
 
         private static void Problema20()
         {
-            Console.WriteLine("Se dau doua siraguri de margele formate din margele albe si negre, notate s1, respectiv s2. Determinati numarul de suprapuneri (margea cu margea) a unui sirag peste celalalt astfel incat margelele suprapuse au aceeasi culoare. Siragurile de margele se pot roti atunci cand le suprapunem.");
-            Console.Write("n: ");
-            int n = int.Parse(Console.ReadLine());
+            Console.WriteLine("Se dau doua siraguri de margele formate din margele albe si negre, notate s1, respectiv s2. Determinati numarul de suprapuneri (margea cu margea) a unui sirag peste celalalt astfel incat margelele suprapuse au aceeasi culoare. Siragurile de margele se pot roti atunci cand le suprapunem.(0 - negru, 1 - alb)");
+            Console.WriteLine("Primul sirag:");
+            string[] s1 = Console.ReadLine().Split();
+            Console.WriteLine("Al doilea sirag:");
+            string[] s2 = Console.ReadLine().Split();
+            int length = 0;
+            if (s1.Length > s2.Length)
+                length = s1.Length;
+            else length = s2.Length;
+            int suprapuneri = 0;
+            int suprapuneri_max = 0;
+            for (int i = 0; i < length; i++)
+            {
+                if (s1[i] == s2[i])
+                    suprapuneri++;
+            }
+            for (int i = 0; i < length; i++)
+            {
+                if (s1[i] == s2[s2.Length-i-1])
+                    suprapuneri_max++;
+            }
+            if (suprapuneri > suprapuneri_max)
+                suprapuneri_max = suprapuneri;
+            Console.WriteLine($"Exista {suprapuneri_max} suprapuneri de margele de aceeasi culoare");
         }
 
         private static void Problema21()
