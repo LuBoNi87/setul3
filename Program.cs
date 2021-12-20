@@ -602,15 +602,33 @@ namespace setul3
         private static void Problema21()
         {
             Console.WriteLine("Se dau doi vectori. Se cere sa se determine ordinea lor lexicografica (care ar trebui sa apara primul in dictionar).");
-            Console.Write("n: ");
-            int n = int.Parse(Console.ReadLine());
+            Console.WriteLine("Primul vector:");
+            string[] v1 = Console.ReadLine().Split();
+            Console.WriteLine("Al doilea vector:");
+            string[] v2 = Console.ReadLine().Split();
+            int length = 0;
+            if (v1.Length > v2.Length)
+                length = v1.Length;
+            else length = v2.Length;
+            int order = 0;
+            int i = 0;
+            while(order == 0)
+            {
+                if (char.Parse(v1[i]) < char.Parse(v2[i]))
+                    order = 1;
+                else if (char.Parse(v1[i]) > char.Parse(v2[i]))
+                    order = 2;
+            }
+            if(order == 1)
+                Console.WriteLine($"Primul vector apare primul in dictionar");
+            if(order == 2)
+                Console.WriteLine($"Primul vector apare primul in dictionar");
         }
 
         private static void Problema22()
         {
             Console.WriteLine("Se dau doi vectori v1 si v2. Se cere sa determine intersectia, reuniunea, si diferentele v1-v2 si v2 -v1 (implementarea operatiilor cu multimi). Elementele care se repeta vor fi scrise o singura data in rezultat.");
-            Console.Write("n: ");
-            int n = int.Parse(Console.ReadLine());
+            
         }
 
         private static void Problema23()
