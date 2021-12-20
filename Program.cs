@@ -458,6 +458,30 @@ namespace setul3
             Console.WriteLine("Se da un vector de n numere naturale. Determinati cel mai mare divizor comun al elementelor vectorului.");
             Console.Write("n: ");
             int n = int.Parse(Console.ReadLine());
+            int[] v = new int[n];
+            int cmmdc = 0;
+            Console.WriteLine("Citeste vectorul:");
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = int.Parse(Console.ReadLine());
+            }
+            for (int i = 0; i < n-1; i++)
+            {
+                cmmdc = Cmmdc(ref v[i], ref v[i + 1]);
+            }
+            Console.WriteLine($"Cel mai mare divizor este {cmmdc}");
+        }
+
+        private static int Cmmdc(ref int v1, ref int v2)
+        {
+            while(v1 != v2)
+            {
+                if (v1 > v2)
+                    v1 = v1 - v2;
+                else if (v1 < v2)
+                    v2 = v2 - v1;
+            }
+            return v1;
         }
 
         private static void Problema17()
