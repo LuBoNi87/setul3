@@ -696,15 +696,144 @@ namespace setul3
         private static void Problema23()
         {
             Console.WriteLine("Aceleasi cerinte ca si la problema anterioara dar de data asta elementele din v1 respectiv v2  sunt in ordine strict crescatoare.");
-            Console.Write("n: ");
-            int n = int.Parse(Console.ReadLine());
+            Console.WriteLine("Primul vector:");
+            string[] tokens1 = Console.ReadLine().Split();
+            List<int> v1 = new List<int>();
+            for (int i = 0; i < tokens1.Length; i++)
+            {
+                v1.Add(int.Parse(tokens1[i]));
+            }
+            Console.WriteLine("Al doilea vector:");
+            string[] tokens2 = Console.ReadLine().Split();
+            List<int> v2 = new List<int>();
+            for (int i = 0; i < tokens2.Length; i++)
+            {
+                v2.Add(int.Parse(tokens2[i]));
+            }
+            int length_small = 0;
+            int length_big = 0;
+            if (v1.Count < v2.Count)
+            {
+                length_small = v1.Count;
+                length_big = v2.Count;
+            }
+            List<int> intersectie = new List<int>();
+            List<int> reuniune = new List<int>();
+            List<int> diferenta1 = new List<int>();
+            List<int> diferenta2 = new List<int>();
+            reuniune = v1;
+            for (int i = 0; i < v2.Count; i++)
+            {
+                if (v1.Contains(v2[i]))
+                    intersectie.Add(v2[i]);
+                else
+                {
+                    reuniune.Add(v2[i]);
+                    diferenta2.Add(v2[i]);
+                }
+            }
+            for (int i = 0; i < v1.Count; i++)
+                if (!v2.Contains(v1[i]))
+                    diferenta1.Add(v1[i]);
+            Console.WriteLine("intersectia");
+            foreach (var item in intersectie)
+            {
+                Console.Write($"{item} ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("reuniunea");
+            foreach (var item in reuniune)
+            {
+                Console.Write($"{item} ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("diferenta v1 - v2");
+            foreach (var item in diferenta1)
+            {
+                Console.Write($"{item} ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("diferenta v2 - v1");
+            foreach (var item in diferenta2)
+            {
+                Console.Write($"{item} ");
+            }
+            Console.WriteLine();
         }
 
         private static void Problema24()
         {
             Console.WriteLine("Aceleasi cerinte ca si la problema anterioara dar de data asta elementele sunt stocate ca vectori cu valori binare (v[i] este 1 daca i face parte din multime si este 0 in caz contrar).");
-            Console.Write("n: ");
-            int n = int.Parse(Console.ReadLine());
+            Console.WriteLine("Primul vector:");
+            string[] tokens1 = Console.ReadLine().Split();
+            int[] v1 = new int[tokens1.Length];
+            for (int i = 0; i < tokens1.Length; i++)
+            {
+                v1[i] = int.Parse(tokens1[i]);
+            }
+            Console.WriteLine("Al doilea vector:");
+            string[] tokens2 = Console.ReadLine().Split();
+            int[] v2 = new int[tokens2.Length];
+            for (int i = 0; i < tokens2.Length; i++)
+            {
+                v2[i] = int.Parse(tokens2[i]);
+            }
+            int length_small = 0;
+            int length_big = 0;
+            if (v1.Length < v2.Length)
+            {
+                length_small = v1.Length;
+                length_big = v2.Length;
+            }
+            else
+            {
+                length_small = v2.Length;
+                length_big = v1.Length;
+            }
+            int[] intersectie = new int[length_small];
+            int[] reuniune = new int[length_big];
+            int[] diferenta1 = new int[v1.Length];
+            int[] diferenta2 = new int[v2.Length];
+            for (int i = 0; i < length_big; i++)
+            {
+                if (v1[i] == 1 && v2[i] == 1)
+                    intersectie[i] = 1;
+                else intersectie[i] = 0;
+                if (v1[i] == 1 || v2[i] == 1)
+                    reuniune[i] = 1;
+            }
+            for (int i = 0; i < v1.Length; i++)
+                if (v1[i] == 1 && v2[i] == 0)
+                    diferenta1[i] = 1;
+                else diferenta1[i] = 0;
+            for (int i = 0; i < v2.Length; i++)
+                if (v1[i] == 0 && v2[i] == 1)
+                    diferenta2[i] = 1;
+                else diferenta2[i] = 0;
+            Console.WriteLine("intersectia");
+            for (int i = 0; i < intersectie.Length; i++)
+            {
+                Console.Write($"{intersectie[i]} ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("reuniunea");
+            for (int i = 0; i < reuniune.Length; i++)
+            {
+                Console.Write($"{reuniune[i]} ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("diferenta v1 - v2");
+            for (int i = 0; i < diferenta1.Length; i++)
+            {
+                Console.Write($"{diferenta1[i]} ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("diferenta v2 - v1");
+            for (int i = 0; i < diferenta2.Length; i++)
+            {
+                Console.Write($"{diferenta2[i]} ");
+            }
+            Console.WriteLine();
         }
 
         private static void Problema25()
