@@ -839,8 +839,60 @@ namespace setul3
         private static void Problema25()
         {
             Console.WriteLine("(Interclasare) Se dau doi vector sortati crescator v1 si v2. Construiti un al treilea vector ordonat crescator format din toate elementele din  v1 si v2. Sunt permise elemente duplicate.");
-            Console.Write("n: ");
-            int n = int.Parse(Console.ReadLine());
+            int i = 0, j = 0, k = 0;
+            Console.WriteLine("Primul vector:");
+            string[] tokens1 = Console.ReadLine().Split();
+            int[] v1 = new int[tokens1.Length];
+            for (i = 0; i < tokens1.Length; i++)
+            {
+                v1[i] = int.Parse(tokens1[i]);
+            }
+            Console.WriteLine("Al doilea vector:");
+            string[] tokens2 = Console.ReadLine().Split();
+            int[] v2 = new int[tokens2.Length];
+            for ( i = 0; i < tokens2.Length; i++)
+            {
+                v2[i] = int.Parse(tokens2[i]);
+            }
+            int[] v3 = new int[v1.Length + v2.Length];
+            i = 0;
+            j = 0;
+            k = 0;
+            while(i<v1.Length && j<v2.Length)
+            {
+                if (i < v1.Length && j < v2.Length)
+                {
+                    if (i < v1.Length && j < v2.Length && v1[i] <= v2[j])
+                    {
+                        v3[k] = v1[i];
+                        k++;
+                        i++;
+                    }
+                    if (i < v1.Length && j < v2.Length && v1[i] > v2[j])
+                    {
+                        v3[k] = v2[j];
+                        j++;
+                        k++;
+                    }
+                }
+            }
+            k--;
+            while(i<v1.Length)
+            {
+                k++;
+                v3[k] = v1[i];
+                i++;
+            }
+            while (j < v2.Length)
+            {
+                k++;
+                v3[k] = v2[j];
+                j++;
+            }
+            for (i = 0; i < v3.Length; i++)
+            {
+                Console.Write($"{v3[i]} ");
+            }
         }
 
         private static void Problema26()
