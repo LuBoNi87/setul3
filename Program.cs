@@ -1106,8 +1106,48 @@ namespace setul3
         private static void Problema30()
         {
             Console.WriteLine("Sortare bicriteriala. Se dau doi vectori de numere intregi E si W, unde E[i] este un numar iar W[i] este un numar care reprezinta ponderea lui E[i]. Sortati vectorii astfel incat elementele lui E sa fie in in ordine crescatoare iar pentru doua valori egale din E, cea cu pondere mai mare va fi prima.");
-            Console.Write("n: ");
-            int n = int.Parse(Console.ReadLine());
+            Console.WriteLine("Citeste numerele");
+            string[] tokense = Console.ReadLine().Split();
+            int[] e = new int[tokense.Length];
+            Console.WriteLine("Citeste ponderea:");
+            string[] tokensw = Console.ReadLine().Split();
+            int[] w = new int[tokensw.Length];
+            int tmp=0;
+            for (int i = 0; i < tokense.Length; i++)
+            {
+                e[i] = int.Parse(tokense[i]);
+            }
+            for (int i = 0; i < tokensw.Length; i++)
+            {
+                w[i] = int.Parse(tokensw[i]);
+            }
+            for (int i = 0; i < e.Length-1; i++)
+            {
+                for (int j = i+1; j < e.Length; j++)
+                {
+                    if(e[i] > e[j])
+                    {
+                        tmp = e[i];
+                        e[i] = e[j];
+                        e[j] = tmp;
+                    }
+                    else if(e[i]==e[j])
+                        if (w[i] < w[j])
+                        {
+                            tmp = e[i];
+                            e[i] = e[j];
+                            e[j] = tmp;
+                            tmp = w[i];
+                            w[i] = w[j];
+                            w[j] = tmp;
+                        }
+                }
+            }
+            for (int i = 0; i < e.Length; i++)
+            {
+                Console.Write($"{e[i]} ");
+            }
+            Console.WriteLine();
         }
 
         private static void Problema31()
