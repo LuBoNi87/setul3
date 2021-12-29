@@ -1066,8 +1066,41 @@ namespace setul3
         private static void Problema29()
         {
             Console.WriteLine("MergeSort. Sortati un vector folosind metoda MergeSort.");
-            Console.Write("n: ");
-            int n = int.Parse(Console.ReadLine());
+            string[] tokens = Console.ReadLine().Split();
+            int[] v = new int[tokens.Length];
+            for (int i = 0; i < tokens.Length; i++)
+            {
+                v[i] = int.Parse(tokens[i]);
+            }
+            MergeSort(v, 0, v.Length - 1);
+            for (int i = 0; i < v.Length; i++)
+            {
+                Console.Write($"{v[i]} ");
+            }
+            Console.WriteLine();
+        }
+
+        private static void MergeSort(int[] v, int st, int dr)
+        {
+            int[] tmp = new int[v.Length+1];
+            if (st < dr)
+            {
+                int m = (st + dr) / 2;
+                MergeSort(v, st, m);
+                MergeSort(v, m + 1, dr);
+                int i = st, j = m + 1, k = 0;
+                while (i <= m && j <= dr)
+                    if (v[i] < v[j])
+                        tmp[++k] = v[i++];
+                    else
+                        tmp[++k] = v[j++];
+                while (i <= m)
+                    tmp[++k] = v[i++];
+                while (j <= dr)
+                    tmp[++k] = v[j++];
+                for (i = st, j = 1; i <= dr; i++, j++)
+                    v[i] = tmp[j];
+            }
         }
 
         private static void Problema30()
