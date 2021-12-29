@@ -1023,8 +1023,44 @@ namespace setul3
         private static void Problema28()
         {
             Console.WriteLine("Quicksort. Sortati un vector folosind metoda QuickSort.");
-            Console.Write("n: ");
-            int n = int.Parse(Console.ReadLine());
+            string[] tokens = Console.ReadLine().Split();
+            int[] v = new int[tokens.Length];
+            for (int i = 0; i < tokens.Length; i++)
+            {
+                v[i] = int.Parse(tokens[i]);
+            }
+            QuickSort(v, 0, v.Length - 1);
+            for (int i = 0; i < v.Length; i++)
+            {
+                Console.Write($"{v[i]} ");
+            }
+            Console.WriteLine();
+        }
+
+        private static void QuickSort(int[] v, int st, int dr)
+        {
+            if (st < dr)
+            {
+                int m = (st + dr) / 2;
+                int aux = v[st];
+                v[st] = v[m];
+                v[m] = aux;
+                int i = st, j = dr, d = 0;
+                while (i < j)
+                {
+                    if (v[i] > v[j])
+                    {
+                        aux = v[i];
+                        v[i] = v[j];
+                        v[j] = aux;
+                        d = 1 - d;
+                    }
+                    i += d;
+                    j -= 1 - d;
+                }
+                QuickSort(v, st, i - 1);
+                QuickSort(v, i + 1, dr);
+            }
         }
 
         private static void Problema29()
