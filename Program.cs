@@ -898,15 +898,126 @@ namespace setul3
         private static void Problema26()
         {
             Console.WriteLine("Se dau doua numere naturale foarte mari (cifrele unui numar foarte mare sunt stocate intr-un vector - fiecare cifra pe cate o pozitie). Se cere sa se determine suma, diferenta si produsul a doua astfel de numere.");
-            Console.Write("n: ");
-            int n = int.Parse(Console.ReadLine());
+            Console.WriteLine("Primul numar:");
+            string[] tokens1 = Console.ReadLine().Split();
+            int[] nr1 = new int[tokens1.Length];
+            int i, j, k;
+            for (i = 0; i < tokens1.Length; i++)
+            {
+                nr1[i] = int.Parse(tokens1[i]);
+            }
+            Console.WriteLine("Al doilea numar:");
+            string[] tokens2 = Console.ReadLine().Split();
+            int[] nr2 = new int[tokens2.Length];
+            for (i = 0; i < tokens2.Length; i++)
+            {
+                nr2[i] = int.Parse(tokens2[i]);
+            }
+            int[] nr3 = new int[Math.Max(tokens1.Length, tokens2.Length)+1];
+            int[] nr4 = new int[Math.Max(tokens1.Length, tokens2.Length)];
+            int rest = 0;
+            i = nr1.Length - 1;
+            j = nr2.Length - 1;
+            k = nr3.Length - 1;
+            while(i>=0 || j>=0)
+            {
+                if (i >= 0 && j >= 0)
+                {
+                    nr3[k] = (nr1[i] + nr2[j] + rest) % 10;
+                    rest = (nr1[i] + nr2[j] + rest) / 10;
+                    i--;j--;k--;
+                }
+                else if(i<0 && j >= 0)
+                {
+                    nr3[k] = (nr2[j] + rest) % 10;
+                    rest = (nr2[j] + rest) / 10;
+                    j--; k--;
+                }
+                else if (i >= 0 && j < 0)
+                {
+                    nr3[k] = (nr1[i] + rest) % 10;
+                    rest = (nr1[i] + rest) / 10;
+                    i--; k--;
+                }
+            }
+            nr3[k] = rest;
+            bool zero = false;
+            Console.WriteLine("Suma: ");
+            for (i = 0; i < nr3.Length; i++)
+            {
+                if (nr3[i] != 0)
+                    zero = true;
+                if (zero == false && nr3[i] == 0)
+                {
+                    continue;
+                }
+                else
+                    Console.Write($"{nr3[i]}");
+            }
+            Console.WriteLine();
+            Console.WriteLine("Diferenta: ");
+            i = nr1.Length - 1;
+            j = nr2.Length - 1;
+            k = nr4.Length - 1;
+            int counter = 1;
+            while (i >= 0 || j >= 0)
+            {
+                if (i >= 0 && j >= 0)
+                {
+                    if (nr1[i] < nr2[j])
+                    {
+                        nr4[k] = (nr1[i] + 10) - nr2[j];
+                        do
+                        {
+                            if (nr1[i - counter] > 0)
+                                nr1[i - counter]--;
+                            counter++;
+                        }
+                        while (nr1[i - counter+1] == 0);
+                        counter = 1;
+                    }
+                    else nr4[k] = nr1[i] - nr2[j];
+                    i--; j--; k--;
+                }
+                else if (i < 0 && j >= 0)
+                {
+                    nr4[k] = -nr2[j];
+                    j--; k--;
+                }
+                else if (i >= 0 && j < 0)
+                {
+                    nr4[k] = nr1[i];
+                    i--; k--;
+                }
+            }
+            for (i = 0; i < nr4.Length; i++)
+            {
+                if (nr4[i] != 0)
+                    zero = true;
+                if (zero == false && nr4[i] == 0)
+                {
+                    continue;
+                }
+                else
+                    Console.Write($"{nr4[i]}");
+            }
+            Console.WriteLine();
         }
 
         private static void Problema27()
         {
             Console.WriteLine("Se da un vector si un index in vectorul respectiv. Se cere sa se determine valoarea din vector care va fi pe pozitia index dupa ce vectorul este sortat.");
-            Console.Write("n: ");
-            int n = int.Parse(Console.ReadLine());
+            Console.WriteLine("Vectorul:");
+            string[] tokens = Console.ReadLine().Split();
+            int[] v = new int[tokens.Length];
+            for (int i = 0; i < tokens.Length; i++)
+            {
+                v[i] = int.Parse(tokens[i]);
+            }
+            Console.WriteLine("Index:");
+            int index = int.Parse(Console.ReadLine());
+            Array.Sort(v);
+            Console.WriteLine($"{v[index]}");
         }
 
         private static void Problema28()
