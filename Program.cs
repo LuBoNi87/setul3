@@ -1153,8 +1153,24 @@ namespace setul3
         private static void Problema31()
         {
             Console.WriteLine("(Element majoritate). Intr-un vector cu n elemente, un element m este element majoritate daca mai mult de n/2 din valorile vectorului sunt egale cu m (prin urmare, daca un vector are element majoritate acesta este unui singur).  Sa se determine elementul majoritate al unui vector (daca nu exista atunci se va afisa <nu exista>). (incercati sa gasiti o solutie liniara).");
-            Console.Write("n: ");
-            int n = int.Parse(Console.ReadLine());
+            Console.WriteLine("Citeste numerele");
+            string[] tokens = Console.ReadLine().Split();
+            int[] v = new int[tokens.Length];
+            int[] fr = new int[int.MaxValue];
+            int mx=0, valmx=0;
+            for (int i = 0; i < tokens.Length; i++)
+            {
+                v[i] = int.Parse(tokens[i]);
+                fr[v[i]]++;
+                if (fr[v[i]] > mx)
+                {
+                    mx = fr[v[i]];
+                    valmx = v[i];
+                }
+            }
+            if(mx>tokens.Length/2)
+            Console.WriteLine($"Elementul majoritate este {valmx}");
+            else Console.WriteLine("Nu exista");
         }
 
     }
